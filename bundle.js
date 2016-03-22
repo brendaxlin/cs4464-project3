@@ -1,3 +1,4 @@
+var jquery = require("jquery");
 var speak = require("speakeasy-nlp");
     var lda = require('lda');
 
@@ -13,7 +14,7 @@ var speak = require("speakeasy-nlp");
     var locAPI = "http://chroniclingamerica.loc.gov/search/pages/results/?";
 
     while (num_articles < MAX_ARTICLES) {
-        $.ajax({
+        jquery.ajax({
             url: locAPI,
             async: false,
             data: {
