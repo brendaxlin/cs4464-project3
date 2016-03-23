@@ -14,7 +14,7 @@ var speak = require("speakeasy-nlp");
     var locAPI = "http://chroniclingamerica.loc.gov/search/pages/results/?";
 
     while (num_articles < MAX_ARTICLES) {
-        jquery.ajax({
+        $.ajax({
             url: locAPI,
             async: false,
             data: {
@@ -114,7 +114,9 @@ var process = function(sentences, numberOfTopics, numberOfTermsPerTopic, languag
     var stopwords = new Array();
 
     languages.forEach(function(value) {
-        var stopwordsLang = require('./stopwords_' + value + ".js");
+        var stopwordsLang;
+        if (value === 'en') stopwordsLang = require('./stopwords_en.js');
+        else if (value === 'de') stopwordsLang = require('./stopwords_de.js');
         stopwords = stopwords.concat(stopwordsLang.stop_words);
     });
 

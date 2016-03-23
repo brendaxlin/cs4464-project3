@@ -13,15 +13,11 @@
       <link rel="stylesheet" href="styles/newspaper.css">
       
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-      <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>    
-
-      <script src="./scripts/bundle.js"></script>
-      <script src="./data/schools.js"></script>
-
+      <script   src="./jquery/dist/jquery.js"></script>    
     </head>
 
-    <script src="./js/main.js"></script>
     <body>
+      <!--<script src="bundle.js"></script>-->
       <div class="head">
           <div class="headerobjectswrapper">
               <header>Media and Immigration</header>
@@ -38,35 +34,47 @@
                   <div class = "body-text">
                   <span class="headline hl1">Overview</span>
                   <p>
-                    Immigrants have been a topic of contention in the U.S. since the arrival of Pilgrims back in 1607 Jamestown and still remains a controversial subject today. With this project, I wanted to examine how immigrants of the U.S. were protrayed in the media to evaluate the sentiments of the country during specific ranges of time. Throughout U.S. history, there has been several waves of immigration, often always of completely new nationality entering the country. In a piece by <b>History.com</b> titled "U.S. Immigration Before 1965," two of the blocks of mass immigrations occured between the time range of the documents provided by Chronicling America API, 1836 to 1922. These periods were 1815 to 1865 and 1880 to 1920, with one before the Civil War and the other after. The Civil War did contribute to the decrease in immigration. Due to the limitations of the API, I will start the range from 1836.
+                    Immigrants have been a topic of contention in the U.S. since the arrival of Pilgrims back in 1607 Jamestown and still remains a controversial subject today. With this project, I wanted to examine how immigrants of the U.S. were portrayed in the media to evaluate the sentiments of the country during specific ranges of time. Throughout U.S. history, there has been several waves of immigration, often always of completely new nationality entering the country. In a piece by <b>History.com</b> titled "U.S. Immigration Before 1965," two of the blocks of mass immigrations occurred between the time range of the documents provided by Chronicling America API, 1836 to 1922. These periods were 1815 to 1865 and 1880 to 1920, with one before the Civil War and the other after. The Civil War did contribute to the decrease in immigration. Due to the limitations of the API, I will start the range from 1836.
                   </p>
                   
                   <span class="headline hl1">1836 to 1865</span>
-                  <p>This was the first major wave of immigration to the U.S. following the Colonial period, and comprised mainly of newcomers from Northern and Western Europe, most of whom arrived from Ireland and Germany. The Irish many stayed along the East Coast near their point of arrivals, while the Germans moved to the midwest and purchased farms. A third major group to arrive to the U.S. during the mid-1800s were Asian immigrants, mostly Chinese, lured by the prospect of the California gold rush.
+                  <p>This was the first major wave of immigration to the U.S. following the Colonial period, and comprised mainly of newcomers from Northern and Western Europe, most of whom arrived from Ireland and Germany. The Irish many stayed along the East Coast near their point of arrivals, while the Germans moved to the Midwest and purchased farms. A third major group to arrive to the U.S. during the mid-1800s were Asian immigrants, mostly Chinese, lured by the prospect of the California gold rush.
                   </p>
                   <p>
-                  During this period of time, the influx of newcomers resulted in anti-immigrant sentiment among certain factions of America’s population, particularly with the native-born, predominantly Anglo-Saxon Protestant groups, as the new arrivals were perceived as unwanted competition for jobs, and the Irish Catholics were discriminated against for their beliefs. This was evident in the creation of the American Party, most colloqially known as the "Know-Nothings," which was anti-immigrant, anti-Catholic.
+                  During this period of time, the influx of newcomers resulted in anti-immigrant sentiment among certain factions of America’s population, particularly with the native-born, predominantly Anglo-Saxon Protestant groups, as the new arrivals were perceived as unwanted competition for jobs. Additionally, the Irish Catholics were discriminated against for their beliefs. This was evident in the creation of the American Party, most colloquially known as the "Know-Nothings," which was anti-immigrant and anti-Catholic.
                   </p>
 
                   <span class="headline hl1">1880 to 1920</span>
-                  <p>Following the Civil War, there was a period of rapid industrialization and urbanization, and America welcomed about 2 million immigrants, reluctantly. During this time period, Chinese Exclusion Act of 1882 was passed, banning Chinese laborers from coming to America. 
+                  <p>Following the Civil War, there was a period of rapid industrialization and urbanization, and America welcomed, sometimes begrudgingly, about 2 million immigrants. During this time period, Chinese Exclusion Act of 1882 was passed, banning Chinese laborers from coming to America.
                   </p>
                   <p>
-                  While just after the range of documents available through the Chronicling American API, the Immigration Act of 1924 created a quota system that restricted entry to 2 percent of the total number of people of each nationality in America as of the 1890 national census — a system that favored immigrants from Western Europe and banned immigrants from Asia.
+                  The Immigration Act of 1924 created a quota system that restricted entry to 2 percent of the total number of people of each nationality in America as of the 1890 national census — a system that favored immigrants from Western Europe and banned immigrants from Asia. Although this occurred just after the range of documents available through the Chronicling American API, the event is necessary to note because the sentiments leading up to its passing is chronicled through the documents provided.
                   </p>
 
-                  <span class="headline hl1">Methods applied</span>
-                  <p> What I found in my data...
+                  <span class="headline hl1">Implementation</span>
+                  <p> To analyze the tone of American journalism throughout these two immigration periods, I wanted to run algorithms through the Optical character recognition (OCR) to determine its tone and sort them into into positive and negative text categories. Because the term immigrant applied to different groups across the country, I planned to map the location of each of the newspapers verbiage onto an interactive map to correlate which groups were being mentioned and whether what was said was positive or negative. 
+                  </p>
+                  <p>I planned to process the OCR through Latent Dirichlet Allocation (LDA) and sentiment analysis, by tokenizing the sentences in the text and analyzing the sentiment of the entire article. An overall positive score would be generated by multiplying the topics and probabilities generated by LDA. The scores would then be standardized and compared for positivity and negativity and assigned to their respective newspapers.
+                  </p>
+                  <p>For my charts, I wanted to move away from bar charts to more abstract bubble charts. Although harder to precisely compare, the visualization would have a stronger impact on how the words varied, side by side. Although static, I planned to use the Bubble Chart from D3 because it was easy to implement and easy to read and compare.
+                  </p>
+                  <p>To map the newspapers with sentiments, I wanted to insert them onto a map with a popup with whether the papers were more positive or negative. The pins of the map would be colored to reflect the bubbles in whether the newspapers were positive or negative. The popups would have the percentage of negativity and positivity. As with my previous projects, I would map using Mapbox.
+                  </p>
+                  <p>Due to complications in retrieving the data, I was unable to finish visualizing this project.
                   </p>
 
                   <span class="headline hl1">Results</span>
-                  <p> What I found in my data...
+                  <p>What I had hoped to visualize was that period American were more accepting in certain areas than others, and acceptance varied by region in the two waves of Immigration. Based of historical knowledge, the Irish were discriminated against harder around the Boston area compared to some of the southern eastern states pre-Civil War, but the distain shifted towards other groups at the turn of the century. While I hoped to determine whether American sentiments around immigration changed over time in different regions, I was ultimately unsuccessful due to my failure to collect the appropriate data.
                   </p>
 
                   <span class="headline hl1">Links and Citations</span>
                   <div><a href="http://www.history.com/topics/u-s-immigration-before-1965">U.S. Immigration Before 1965</a></div>
+                  <div><a href="chroniclingamerica.loc.gov">Chronicaling America API (Newspaper Data Source)</a></div>
                   <div><a href="https://www.npmjs.com/package/speakeasy-nlp">Sentiment Analysis from Speakeasy</a></div>
                   <div><a href="https://www.npmjs.com/package/lda">LDA</a></div>
+                  <div><a href="http://bl.ocks.org/mbostock/4063269">D3 Chart Type</a></div>
+                  <div><a href="https://www.mapbox.com/">Mapbox</a></div>
+                  <div><a href="http://browserify.org/">Browserify</a></div>
                   </div>
                 </div>
                 <div class="figcaption">This work was done as part of a class assignment for Georgia Tech's CS4464/6465 Fall 2016. The opinions expressed here, if any, are solely those of the students working on this assignment and not of the Instructor or Georgia Tech.</div>
